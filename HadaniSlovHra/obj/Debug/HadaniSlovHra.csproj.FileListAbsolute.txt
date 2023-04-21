@@ -1,0 +1,8 @@
+C:\Users\Uzivatel\source\repos\HadaniSlovHra\HadaniSlovHra\bin\Debug\HadaniSlovHra.exe.config
+C:\Users\Uzivatel\source\repos\HadaniSlovHra\HadaniSlovHra\bin\Debug\HadaniSlovHra.exe
+C:\Users\Uzivatel\source\repos\HadaniSlovHra\HadaniSlovHra\bin\Debug\HadaniSlovHra.pdb
+C:\Users\Uzivatel\source\repos\HadaniSlovHra\HadaniSlovHra\obj\Debug\HadaniSlovHra.csproj.AssemblyReference.cache
+C:\Users\Uzivatel\source\repos\HadaniSlovHra\HadaniSlovHra\obj\Debug\HadaniSlovHra.csproj.SuggestedBindingRedirects.cache
+C:\Users\Uzivatel\source\repos\HadaniSlovHra\HadaniSlovHra\obj\Debug\HadaniSlovHra.csproj.CoreCompileInputs.cache
+C:\Users\Uzivatel\source\repos\HadaniSlovHra\HadaniSlovHra\obj\Debug\HadaniSlovHra.exe
+C:\Users\Uzivatel\source\repos\HadaniSlovHra\HadaniSlovHra\obj\Debug\HadaniSlovHra.pdb
