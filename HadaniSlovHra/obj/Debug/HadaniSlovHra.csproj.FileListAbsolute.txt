@@ -14,3 +14,11 @@ C:\Users\1it1\Desktop\HadaniSlov-main\HadaniSlovHra\obj\Debug\HadaniSlovHra.cspr
 C:\Users\1it1\Desktop\HadaniSlov-main\HadaniSlovHra\obj\Debug\HadaniSlovHra.csproj.CoreCompileInputs.cache
 C:\Users\1it1\Desktop\HadaniSlov-main\HadaniSlovHra\obj\Debug\HadaniSlovHra.exe
 C:\Users\1it1\Desktop\HadaniSlov-main\HadaniSlovHra\obj\Debug\HadaniSlovHra.pdb
+C:\Users\1it1\Desktop\HadaniHra\HadaniSlov\HadaniSlovHra\bin\Debug\HadaniSlovHra.exe.config
+C:\Users\1it1\Desktop\HadaniHra\HadaniSlov\HadaniSlovHra\bin\Debug\HadaniSlovHra.exe
+C:\Users\1it1\Desktop\HadaniHra\HadaniSlov\HadaniSlovHra\bin\Debug\HadaniSlovHra.pdb
+C:\Users\1it1\Desktop\HadaniHra\HadaniSlov\HadaniSlovHra\obj\Debug\HadaniSlovHra.csproj.AssemblyReference.cache
+C:\Users\1it1\Desktop\HadaniHra\HadaniSlov\HadaniSlovHra\obj\Debug\HadaniSlovHra.csproj.SuggestedBindingRedirects.cache
+C:\Users\1it1\Desktop\HadaniHra\HadaniSlov\HadaniSlovHra\obj\Debug\HadaniSlovHra.csproj.CoreCompileInputs.cache
+C:\Users\1it1\Desktop\HadaniHra\HadaniSlov\HadaniSlovHra\obj\Debug\HadaniSlovHra.exe
+C:\Users\1it1\Desktop\HadaniHra\HadaniSlov\HadaniSlovHra\obj\Debug\HadaniSlovHra.pdb

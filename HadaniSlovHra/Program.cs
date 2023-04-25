@@ -15,17 +15,8 @@ namespace HadaniSlovHra
             string[] easy = File.ReadAllLines("easy.txt");
             string[] hard = File.ReadAllLines("hard.txt");
 
-            Console.WriteLine("Zvol si obtížnost. (Easy nebo Hard)");
-            string obtiznost = Console.ReadLine();
-            if (obtiznost == "Easy" || obtiznost == "easy" || obtiznost == "Hard" || obtiznost == "hard")
-            {
-            }
-            else
-            {
-                Console.WriteLine("Zadal jsi špatný vstup!");
-                Console.ReadKey();
-                Environment.Exit(0);
-            }
+            string obtiznost = "easyhard";
+            Obtiznost(obtiznost);
 
             string HadaneSlovo;
             int pokusy;
@@ -61,7 +52,10 @@ namespace HadaniSlovHra
             Console.WriteLine("Hádáš bez diakritiky a malé písmena!");
             Console.WriteLine("");
             Console.WriteLine("Hádej slovo:");
-            Console.WriteLine(string.Join(" ", uhodnutePismena));
+            for (int i = 0; i < uhodnutePismena.Length; i++)
+            {
+                Console.Write(uhodnutePismena[i] + " ");
+            }
             Console.ResetColor();
             
             while (pokusy > 0 && spravne < hadaneSlovo.Length)
@@ -69,6 +63,7 @@ namespace HadaniSlovHra
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Zadej písmeno:");
                 Console.ResetColor();
+             
                 char pismeno = Console.ReadLine().ToLower()[0];
 
                 bool uhodnuto = false;
@@ -113,6 +108,22 @@ namespace HadaniSlovHra
             }
 
             Console.ReadKey();
+        }
+        static string Obtiznost(string obtiznost)
+        {
+            Console.WriteLine("Zvol si obtížnost. (Easy nebo Hard)");
+            obtiznost = Console.ReadLine();
+            if (obtiznost == "Easy" || obtiznost == "easy" || obtiznost == "Hard" || obtiznost == "hard")
+            {
+            }
+            else
+            {
+                Console.WriteLine("Zadal jsi špatný vstup!");
+                Console.ReadKey();
+                Environment.Exit(0);
+            }
+
+            return obtiznost;
         }
     }
 }
