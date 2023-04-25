@@ -34,14 +34,14 @@ namespace HadaniSlovHra
                 Random rand = new Random();
                 int cislo = rand.Next(easy.Length);
                 HadaneSlovo = easy[cislo];
-                pokusy = 5;
+                pokusy = 6;
             }
             else
             {
                 Random rand = new Random();
                 int cislo = rand.Next(hard.Length);
                 HadaneSlovo = hard[cislo];
-                pokusy = 3;
+                pokusy = 4;
             }
 
             Console.Clear();
@@ -93,7 +93,10 @@ namespace HadaniSlovHra
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Správně! Zbyva ti uhodnout tento počet písmen: " + (hadaneSlovo.Length - spravne));
-                    //Console.WriteLine(string.Join(" ", uhodnutePismena));
+                    for (int i = 0; i < uhodnutePismena.Length; i++)
+                    {
+                        Console.Write(uhodnutePismena[i] + " ");
+                    }
                     Console.WriteLine("");
                 }
             }
