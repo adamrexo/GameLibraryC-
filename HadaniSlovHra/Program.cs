@@ -82,7 +82,7 @@ namespace HadaniSlovHra
                     }
                 }
 
-                if (!uhodnuto)
+                if (uhodnuto == false)
                 {
                     pokusy = pokusy - 1;
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -93,7 +93,7 @@ namespace HadaniSlovHra
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Správně! Zbyva ti uhodnout tento počet písmen: " + (hadaneSlovo.Length - spravne));
-                    Console.WriteLine(string.Join(" ", uhodnutePismena));
+                    //Console.WriteLine(string.Join(" ", uhodnutePismena));
                     Console.WriteLine("");
                 }
             }
