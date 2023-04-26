@@ -20,7 +20,7 @@ namespace HadaniSlovHra
 
             string HadaneSlovo;
             int pokusy;
-            if (obtiznost == "easy" || obtiznost == "Easy")
+            if (obtiznost == "easy")
             {
                 Random rand = new Random();
                 int cislo = rand.Next(easy.Length);
@@ -56,6 +56,7 @@ namespace HadaniSlovHra
             {
                 Console.Write(uhodnutePismena[i] + " ");
             }
+            Console.WriteLine();
             Console.ResetColor();
             
             while (pokusy > 0 && spravne < hadaneSlovo.Length)
@@ -63,8 +64,26 @@ namespace HadaniSlovHra
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Zadej písmeno:");
                 Console.ResetColor();
-             
-                char pismeno = Console.ReadLine().ToLower()[0];
+
+                char pismeno = 'n';
+                bool Vstup = false;
+                do
+                {
+                    try
+                    {
+                        pismeno = Console.ReadLine().ToLower()[0];
+                        Vstup = true;
+                    }
+                    catch (Exception)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Nezadal jste malé písmeno z české abecedy!");
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine("Zadej písmeno:");
+                        Console.ResetColor();
+                    }
+                } while (Vstup == false);
+
 
                 bool uhodnuto = false;
                 for (int i = 0; i < hadaneSlovo.Length; i++)
@@ -111,17 +130,25 @@ namespace HadaniSlovHra
         }
         static string Obtiznost(string obtiznost)
         {
-            Console.WriteLine("Zvol si obtížnost. (Easy nebo Hard)");
-            obtiznost = Console.ReadLine();
-            if (obtiznost == "Easy" || obtiznost == "easy" || obtiznost == "Hard" || obtiznost == "hard")
+            bool Vstup = false;
+            do
             {
-            }
-            else
-            {
-                Console.WriteLine("Zadal jsi špatný vstup!");
-                Console.ReadKey();
-                Environment.Exit(0);
-            }
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("Zvol si obtížnost. (Easy nebo Hard)");
+                Console.ResetColor();
+                obtiznost = Console.ReadLine();
+                obtiznost = obtiznost.ToLower();
+                if (obtiznost == "easy" || obtiznost == "hard")
+                {
+                    Vstup = true;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Zadal jsi špatný vstup, zkus to znovu!");
+                    Console.ResetColor();
+                }
+            } while (Vstup == false);
 
             return obtiznost;
         }
