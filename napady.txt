@@ -1,0 +1,21 @@
+Určitě je možné do vaší C# .NET Console hry na hádání slov přidat několik zajímavých vylepšení, například:
+
+Hráčské skóre: Vytvořte systém bodování, kde hráči dostávají body za každé úspěšné hádání slova. Můžete také přidat různé skóre pro různé obtížnosti.
+
+Vícenásobné hráčské módy: Přidejte možnost hrát proti jiným hráčům nebo proti počítači.
+
+Časový limit: Přidejte časový limit pro každé hádání slova, což zvyšuje napětí a soustředění hráčů.
+
+Nápovědy: Přidejte možnost hráčům poskytnout nápovědy, například o počtu písmen nebo o prvním písmenu slova.
+
+Rozšiřující slovníky: Vytvořte rozšiřující slovníky, které obsahují slova různých témat, jako jsou zvířata, rostliny, zeměpisné názvy a další.
+
+Vylepšené grafické rozhraní: Pokud byste chtěli přejít z konzolového rozhraní na vizuální, můžete vytvořit vylepšené grafické rozhraní pro hru, což zlepší celkový dojem a použitelnost.
+
+Možnosti úpravy: Přidejte možnost hráčům upravovat herní prvky, jako jsou barvy písmen nebo pozadí, což umožní personalizaci hry pro každého hráče.
+
+Online hry: Vytvořte online verzi hry, aby hráči mohli hrát s ostatními hráči po celém světě.
+
+Hledání slov v obrázcích: Přidejte funkci, která umožní hráčům hledat slova v obrázcích, což je další zajímavý způsob, jak zlepšit herní zážitek.
+
+Hledání slov v zvukových záznamech: Přidejte funkci, která umožní hráčům hledat slova v zvukových záznamech, což může být velmi zábavné a originální.
