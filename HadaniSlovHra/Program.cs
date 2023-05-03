@@ -375,9 +375,11 @@ namespace GameLib
             Console.WriteLine("Zmáčkni libovolné tlačítko pro hození si kostkou!");
             Console.ReadKey();
 
-            string[] pole = { "1", "2", "3", "4", "5" , "6", "7", "8", "9"};
+            string[] pole = { "1", "2", "3", "4", "5" , "6"};
             Random rand = new Random();
             int cislo = rand.Next(pole.Length);
+
+            Console.Clear();
 
             Console.WriteLine("Hodil si číslo {0}! Gratuluji.", pole[cislo]);
         }
@@ -516,16 +518,40 @@ namespace GameLib
             Console.WriteLine("Vítej {0} {1} v ATM!", jmeno, prijmeni);
             Console.WriteLine("Zadej akci, kterou chceš provést:");
             Console.WriteLine("0 = Výběr    1 = Vklad");
-            Console.WriteLine("2 = Změnit PIN    3 = Opustit bankomat");
-            string Vstup = Console.ReadLine();
-            switch (Vstup)
+            Console.WriteLine("2 = Změnit PIN    4 = Opustit bankomat");
+            int a = 0;
+            bool Vstup = false;
+            do
             {
+                try
+                {
+                    a = int.Parse(Console.ReadLine());
+                    Vstup = true;
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Nezadali jste číslo!");
+                }
+            } while (Vstup == false);
+            switch (a)
+            {
+                case 0:
+
+                    break;
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+                    Console.WriteLine("Děkujeme za použití bankomatu!");
+                    Console.WriteLine("Vidíme se příště!");
+                    break;
                 default:
                     Console.WriteLine("Zadal jsi špatnou hodnotu!");
                     break;
             }
-
-            Console.ReadKey();
         }
 
         static void ATMMenu()
