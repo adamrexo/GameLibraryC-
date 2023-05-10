@@ -419,15 +419,6 @@ namespace GameLib
                     prijmeni = s;
                 }
             }
-            double penize = 0;
-            using (StreamReader sr = new StreamReader(@"penize.txt"))
-            {
-                string s;
-                while ((s = sr.ReadLine()) != null)
-                {
-                    penize = double.Parse(s);
-                }
-            }
             int pin = 0000;
             using (StreamReader sr = new StreamReader(@"pin.txt"))
             {
@@ -514,11 +505,15 @@ namespace GameLib
                     Console.ResetColor();
                 }
             } while (Vstup3 == false);
-
+            bool End = false;
+            do
+            {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Vítej {0} {1} v ATM!", jmeno, prijmeni);
             Console.WriteLine("Zadej akci, kterou chceš provést:");
             Console.WriteLine("0 = Výběr    1 = Vklad");
-            Console.WriteLine("2 = Změnit PIN    4 = Opustit bankomat");
+            Console.WriteLine("2 = Změnit PIN    3 = Stav účtu");
+            Console.WriteLine("4 = Opustit bankomat");
             int a = 0;
             bool Vstup = false;
             do
@@ -533,25 +528,126 @@ namespace GameLib
                     Console.WriteLine("Nezadali jste číslo!");
                 }
             } while (Vstup == false);
+            double penize = 0;
+            using (StreamReader sr = new StreamReader(@"penize.txt"))
+            {
+                string s;
+                while ((s = sr.ReadLine()) != null)
+                {
+                    penize = double.Parse(s);
+                }
+            }
             switch (a)
             {
                 case 0:
+                    double c = 0;
+                    Vstup = false;
+                    do
+                    {
+                        Console.WriteLine("Kolik si chceš vybrat?");
+                        try
+                        {
+                            c = int.Parse(Console.ReadLine());
+                            Vstup = true;
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Zadali jste neplatný vstup! Zkuste to znovu.");
+                        }
+                    } while (Vstup == false);
+                    if (c > penize)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Chcete vybrat více peněz, než máte!");
+                        Console.ResetColor();
+                        Console.ReadKey();
+                        Console.Clear();
+                    }
+                    else
+                    {
+                        penize = penize - c;
+                        Console.WriteLine("Úspěšně jste vybrali {0} peněz!", c);
+                        Console.WriteLine("Momentálně na Vašem účtu máte: {0}", penize);
+                        Console.ReadKey();
+                        Console.Clear();
+                    }
 
+                    using (StreamWriter sw = new StreamWriter(@"penize.txt"))
+                    {
+                        sw.WriteLine(penize);
+                        sw.Flush();
+                    }
                     break;
                 case 1:
-
+                    c = 0;
+                    Vstup = false;
+                    do
+                    {
+                        Console.WriteLine("Kolik chcete vložit?");
+                        try
+                        {
+                            c = int.Parse(Console.ReadLine());
+                            Vstup = true;
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Zadali jste neplatný vstup! Zkuste to znovu.");
+                        }
+                    } while (Vstup == false);
+                    penize = penize + c;
+                    Console.WriteLine("Úspěšně jste vložili {0} peněz!", c);
+                    Console.WriteLine("Momentálně na Vašem účtu máte: {0}", penize);
+                    using (StreamWriter sw = new StreamWriter(@"penize.txt"))
+                    {
+                        sw.WriteLine(penize);
+                        sw.Flush();
+                    }
+                        Console.ReadKey();
+                        Console.Clear();
                     break;
                 case 2:
-
+                    int pinz = 0;
+                    Vstup = false;
+                    do
+                    {
+                        try
+                        {
+                            Console.WriteLine("Jaký pin chcete nastavit?");
+                            pinz = int.Parse(Console.ReadLine());
+                            Vstup = true;
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Zadali jste neplatný vstup! Zkuste to znovu.");
+                        }
+                    } while (Vstup == false);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("PIN Úspěšně změněn!");
+                    Console.ResetColor();
+                    using (StreamWriter sw = new StreamWriter(@"pin.txt"))
+                    {
+                        sw.WriteLine(pinz);
+                        sw.Flush();
+                    }
+                    Console.ReadKey();
+                    Console.Clear();
                     break;
                 case 3:
+                        Console.WriteLine("Zůstatek na účtu činí: {0}", penize);
+                        Console.WriteLine("PIN vašeho účtu je: {0}", pin);
+                        Console.ReadKey();
+                        Console.Clear();
+                    break;
+                case 4:
                     Console.WriteLine("Děkujeme za použití bankomatu!");
                     Console.WriteLine("Vidíme se příště!");
+                    End = true;
                     break;
                 default:
                     Console.WriteLine("Zadal jsi špatnou hodnotu!");
                     break;
             }
+            } while (End == false);
         }
 
         static void ATMMenu()
@@ -582,5 +678,6 @@ namespace GameLib
         //
         // ATM Konec
         //
+        //Hra jak maty krade siby
     }
 }
