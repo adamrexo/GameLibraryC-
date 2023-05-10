@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.IO;
+using System.Runtime.Remoting.Messaging;
+using System.Security.Cryptography;
 
 namespace GameLib
 {
@@ -24,11 +26,11 @@ namespace GameLib
                 Console.WriteLine("██║░░╚██╗██╔══██║██║╚██╔╝██║██╔══╝░░██║░░░░░██║██╔══██╗");
                 Console.WriteLine("╚██████╔╝██║░░██║██║░╚═╝░██║███████╗███████╗██║██████╦╝");
                 Console.WriteLine("░╚═════╝░╚═╝░░╚═╝╚═╝░░░░░╚═╝╚══════╝╚══════╝╚═╝╚═════╝░");
-                Console.WriteLine("V.1.0.");
+                Console.WriteLine("V.1.3.");
                 Console.WriteLine("");
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("0 = Hádání slov    1 = Kámen, Nůžky, Papír    2 = Hoď si kostkou!");
-                Console.WriteLine("3 = ATM Simulator    4 = Coming Soon    5 = Coming Soon");
+                Console.WriteLine("3 = ATM Simulator    4 = Blackjack");
                 Console.WriteLine("9 = Přeji si ukončit aplikaci");
                 Console.WriteLine("");
                 Console.WriteLine("Vítejte v GameLib! Napište číslo dle menu, abyste si zvolili hru, kterou si chcete zahrát!");
@@ -61,6 +63,9 @@ namespace GameLib
                         break;
                     case 3:
                         ATM();
+                        break;
+                    case 4:
+                        Blackjack();
                         break;
                     case 9:
                         Console.Clear();
@@ -639,8 +644,10 @@ namespace GameLib
                         Console.Clear();
                     break;
                 case 4:
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Děkujeme za použití bankomatu!");
                     Console.WriteLine("Vidíme se příště!");
+                    Console.ResetColor();
                     End = true;
                     break;
                 default:
@@ -678,6 +685,195 @@ namespace GameLib
         //
         // ATM Konec
         //
-        //Hra jak maty krade siby
+        //
+        // Blackjack
+        //
+        static void Blackjack()
+        {
+            BJMenu();
+
+            bool Vstup = false;
+            do
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("Vyber si akci, kterou chceš provést:");
+                Console.WriteLine("0 = Začít hru    1 = Ukončit hru");
+                Console.ResetColor();
+                int a = 0;
+                bool b = false;
+                do
+                {
+                    try
+                    {
+                        a = int.Parse(Console.ReadLine());
+                        b = true;
+                    }
+                    catch (Exception)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Zadali jste neplatný vstup! Zkuste to znovu.");
+                        Console.ResetColor();
+                    }
+                } while (b == false);
+
+                switch (a)
+                {
+                    case 0:
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.Clear();
+
+                        int[] pole = { 15, 16, 17, 18, 19, 20, 21, 22, 23 };
+
+                        Random rand = new Random();
+                        int dealer = rand.Next(pole.Length);
+                        int hrac = 0;
+
+                        int cislo = rand.Next(13);
+                        hrac = hrac + cislo;
+                        Console.WriteLine("Tvoje karty mají hodnotu: {0}", hrac);
+                        Console.WriteLine("");
+
+                        b = false;
+                        do
+                        {
+                            Console.WriteLine("Přeješ si další karty? (Ano/Ne)");
+                            string Prih = Console.ReadLine().ToLower();
+                            Console.WriteLine("");
+                            if (Prih == "ano")
+                            {
+                                cislo = rand.Next(13);
+                                hrac = hrac + cislo;
+                                Console.WriteLine("Tvoje karty mají hodnotu: {0}", hrac);
+                                Console.WriteLine("");
+                                if (hrac > 21)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("Prohrál jsi, tvé karty přesáhly hodnotu 21!");
+                                    Console.WriteLine("");
+                                    Console.ResetColor();
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Přeješ si další karty? (Ano/Ne)");
+                                    Prih = Console.ReadLine().ToLower();
+                                    Console.WriteLine("");
+                                    if (Prih == "ano")
+                                    {
+                                        cislo = rand.Next(13);
+                                        hrac = hrac + cislo;
+                                        Console.WriteLine("Tvoje karty mají hodnotu: {0}", hrac);
+                                        Console.WriteLine("");
+                                        if (hrac > 21)
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Red;
+                                            Console.WriteLine("Prohrál jsi, tvé karty přesáhly hodnotu 21!");
+                                            Console.WriteLine("");
+                                            Console.ResetColor();
+                                        }
+                                        Console.WriteLine("Přeješ si další karty? (Ano/Ne)");
+                                        Prih = Console.ReadLine().ToLower();
+                                        Console.WriteLine("");
+                                        if (Prih == "ano")
+                                        {
+                                            cislo = rand.Next(13);
+                                            hrac = hrac + cislo;
+                                            Console.WriteLine("Tvoje karty mají hodnotu: {0}", hrac);
+                                            Console.WriteLine("");
+                                            if (hrac > 21)
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("Prohrál jsi, tvé karty přesáhly hodnotu 21!");
+                                                Console.WriteLine("");
+                                                Console.ResetColor();
+                                            }
+                                            else
+                                            {
+                                                Console.Clear();
+                                                Konec(hrac, dealer);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            Console.Clear();
+                                            Konec(hrac, dealer);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Console.Clear();
+                                        Konec(hrac, dealer);
+                                    }
+                                    }
+                                b = true;
+                            }
+                            else
+                            {
+                                Konec(hrac, dealer);
+                            }
+                        } while (b = false);
+
+                        break;
+                    case 1:
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine("Děkuji za vyzkoušení Blackjacku,");
+                        Console.WriteLine("Snad se ještě uvidíme!");
+                        Console.ResetColor();
+                        Vstup = true;
+                        break;
+                    default:
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Zadal jsi špatnou hodnotu!");
+                        Console.ResetColor();
+                        break;
+                }
+            } while (Vstup == false);
+        }
+        static void Konec(int x, int y)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Tvoje současná hodnota karet činí: {0}", x);
+            Console.WriteLine("Dealerova současná hodnota karet činí: {0}", y);
+
+            if (x > y)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Vyhrál jsi!");
+                Console.ResetColor();
+            }
+            else if (y > x)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Prohrál jsi!");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("Remíza, můžeš to zkusit znovu!");
+                Console.ResetColor();
+            }
+            Console.ReadKey();
+        }
+        static void BJMenu()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Vítej ve hře Blackjack!");
+            Console.WriteLine("Tvým úkolem je získat co nejvyšší hodnotu karet, ale nepřesáhnout 21!");
+            Console.WriteLine("Hraješ proti dealerovi, který hází karty tobě, ale i sobě.");
+            Console.WriteLine("Pokud hodnota dealera bude menší, než ta tvoje, vyhrál si.");
+            Console.WriteLine("Pokud bude stejná, je to remíza! A pokud bude větší, prohrál si.");
+            Console.WriteLine("Přibrat si karty můžeš maximálně 3!");
+            Console.WriteLine("");
+            Console.WriteLine("Pokud rozumíš pravidlům, zmáčkni libovolné tlačítko.");
+            Console.ResetColor();
+            Console.ReadKey();
+        }
+        //
+        // Blackjack Konec
+        //
     }
 }

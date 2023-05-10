@@ -46,3 +46,11 @@ C:\Users\1it1\Desktop\git\GameLibraryC-\HadaniSlovHra\obj\Debug\HadaniSlovHra.cs
 C:\Users\1it1\Desktop\git\GameLibraryC-\HadaniSlovHra\obj\Debug\HadaniSlovHra.csproj.CoreCompileInputs.cache
 C:\Users\1it1\Desktop\git\GameLibraryC-\HadaniSlovHra\obj\Debug\HadaniSlovHra.exe
 C:\Users\1it1\Desktop\git\GameLibraryC-\HadaniSlovHra\obj\Debug\HadaniSlovHra.pdb
+C:\Users\Uzivatel\Desktop\C#Projekt\GameLibraryC-\HadaniSlovHra\obj\Debug\HadaniSlovHra.csproj.AssemblyReference.cache
+C:\Users\Uzivatel\Desktop\C#Projekt\GameLibraryC-\HadaniSlovHra\obj\Debug\HadaniSlovHra.csproj.SuggestedBindingRedirects.cache
+C:\Users\Uzivatel\Desktop\C#Projekt\GameLibraryC-\HadaniSlovHra\obj\Debug\HadaniSlovHra.csproj.CoreCompileInputs.cache
+C:\Users\Uzivatel\Desktop\C#Projekt\GameLibraryC-\HadaniSlovHra\obj\Debug\HadaniSlovHra.exe
+C:\Users\Uzivatel\Desktop\C#Projekt\GameLibraryC-\HadaniSlovHra\obj\Debug\HadaniSlovHra.pdb
+C:\Users\Uzivatel\Desktop\C#Projekt\GameLibraryC-\HadaniSlovHra\bin\Debug\HadaniSlovHra.exe.config
+C:\Users\Uzivatel\Desktop\C#Projekt\GameLibraryC-\HadaniSlovHra\bin\Debug\HadaniSlovHra.exe
+C:\Users\Uzivatel\Desktop\C#Projekt\GameLibraryC-\HadaniSlovHra\bin\Debug\HadaniSlovHra.pdb
