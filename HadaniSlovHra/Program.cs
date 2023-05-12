@@ -723,10 +723,8 @@ namespace GameLib
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.Clear();
 
-                        int[] pole = { 15, 16, 17, 18, 19, 20, 21, 22, 23 };
-
                         Random rand = new Random();
-                        int dealer = rand.Next(pole.Length);
+                        int dealer = rand.Next(16, 25 + 1);
                         int hrac = 0;
 
                         int cislo = rand.Next(13);
@@ -742,7 +740,7 @@ namespace GameLib
                             Console.WriteLine("");
                             if (Prih == "ano")
                             {
-                                cislo = rand.Next(13);
+                                cislo = rand.Next(1, 13);
                                 hrac = hrac + cislo;
                                 Console.WriteLine("Tvoje karty mají hodnotu: {0}", hrac);
                                 Console.WriteLine("");
@@ -751,6 +749,7 @@ namespace GameLib
                                     Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("Prohrál jsi, tvé karty přesáhly hodnotu 21!");
                                     Console.WriteLine("");
+                                    Console.ReadKey();
                                     Console.ResetColor();
                                 }
                                 else
@@ -760,7 +759,7 @@ namespace GameLib
                                     Console.WriteLine("");
                                     if (Prih == "ano")
                                     {
-                                        cislo = rand.Next(13);
+                                        cislo = rand.Next(1, 13);
                                         hrac = hrac + cislo;
                                         Console.WriteLine("Tvoje karty mají hodnotu: {0}", hrac);
                                         Console.WriteLine("");
@@ -769,34 +768,39 @@ namespace GameLib
                                             Console.ForegroundColor = ConsoleColor.Red;
                                             Console.WriteLine("Prohrál jsi, tvé karty přesáhly hodnotu 21!");
                                             Console.WriteLine("");
+                                            Console.ReadKey();
                                             Console.ResetColor();
                                         }
-                                        Console.WriteLine("Přeješ si další karty? (Ano/Ne)");
-                                        Prih = Console.ReadLine().ToLower();
-                                        Console.WriteLine("");
-                                        if (Prih == "ano")
+                                        else
                                         {
-                                            cislo = rand.Next(13);
-                                            hrac = hrac + cislo;
-                                            Console.WriteLine("Tvoje karty mají hodnotu: {0}", hrac);
+                                            Console.WriteLine("Přeješ si další karty? (Ano/Ne)");
+                                            Prih = Console.ReadLine().ToLower();
                                             Console.WriteLine("");
-                                            if (hrac > 21)
+                                            if (Prih == "ano")
                                             {
-                                                Console.ForegroundColor = ConsoleColor.Red;
-                                                Console.WriteLine("Prohrál jsi, tvé karty přesáhly hodnotu 21!");
+                                                cislo = rand.Next(1, 13);
+                                                hrac = hrac + cislo;
+                                                Console.WriteLine("Tvoje karty mají hodnotu: {0}", hrac);
                                                 Console.WriteLine("");
-                                                Console.ResetColor();
+                                                if (hrac > 21)
+                                                {
+                                                    Console.ForegroundColor = ConsoleColor.Red;
+                                                    Console.WriteLine("Prohrál jsi, tvé karty přesáhly hodnotu 21!");
+                                                    Console.WriteLine("");
+                                                    Console.ReadKey();
+                                                    Console.ResetColor();
+                                                }
+                                                else
+                                                {
+                                                    Console.Clear();
+                                                    Konec(hrac, dealer);
+                                                }
                                             }
                                             else
                                             {
                                                 Console.Clear();
                                                 Konec(hrac, dealer);
                                             }
-                                        }
-                                        else
-                                        {
-                                            Console.Clear();
-                                            Konec(hrac, dealer);
                                         }
                                     }
                                     else
@@ -837,16 +841,28 @@ namespace GameLib
             Console.WriteLine("Tvoje současná hodnota karet činí: {0}", x);
             Console.WriteLine("Dealerova současná hodnota karet činí: {0}", y);
 
-            if (x > y)
+            if (x > y && x <= 21)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Vyhrál jsi!");
                 Console.ResetColor();
             }
-            else if (y > x)
+            else if (x > y && x > 21)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Prohrál jsi!");
+                Console.ResetColor();
+            }
+            else if (y > x && y <= 21)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Prohrál jsi!");
+                Console.ResetColor();
+            }
+            else if (y > x && y > 21)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Vyhrál jsi!");
                 Console.ResetColor();
             }
             else
